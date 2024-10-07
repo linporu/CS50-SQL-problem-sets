@@ -1,0 +1,40 @@
+erDiagram
+    INGREDIENTS ||--o{ PRODUCES : contains
+    DONUTS }|--|{ PRODUCES : made_from
+    DONUTS }|--o{ ORDER_ITEMS : includes
+    ORDERS ||--|{ ORDER_ITEMS : contains
+    CUSTOMERS ||--o{ ORDERS : places
+
+    INGREDIENTS {
+        int id PK
+        string name UK
+        numeric price_per_unit
+        string unit
+    }
+    DONUTS {
+        int id PK
+        string name UK
+        string is_gluten_free
+        numeric price
+    }
+    PRODUCES {
+        int donut_id FK
+        int ingredient_id FK
+        numeric amount
+    }
+    ORDERS {
+        int id PK
+        timestamp timestamp
+        int customer_id FK
+    }
+    ORDER_ITEMS {
+        int id PK
+        int order_id FK
+        int donut_id FK
+        int amount
+    }
+    CUSTOMERS {
+        int id PK
+        string first_name
+        string last_name
+    }
