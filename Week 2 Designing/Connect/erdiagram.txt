@@ -1,0 +1,36 @@
+erDiagram
+    USERS ||--o{ CONNECTIONS : "has"
+    SCHOOLS ||--o{ CONNECTIONS : "has"
+    COMPANIES ||--o{ CONNECTIONS : "has"
+
+    USERS {
+        int id PK
+        string first_name
+        string last_name
+        string username
+        string hashed_password
+    }
+    SCHOOLS {
+        int id PK
+        string name
+        string type
+        string location
+        numeric found_year
+    }
+    COMPANIES {
+        int id PK
+        string name
+        string industry
+        string location
+    }
+    CONNECTIONS {
+        int id PK
+        int from_user_id FK
+        int to_user_id FK
+        int to_school_id FK
+        int to_company_id FK
+        datetime start_affiliation_at
+        datetime end_affiliation_at
+        string degree
+        string title
+    }
